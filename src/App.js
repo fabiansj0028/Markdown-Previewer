@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { marked } from 'marked';
+import Previewer from './Previewer';
 
 function App() {
   const [text,setText] = useState(`
@@ -23,9 +23,6 @@ function App() {
   ![alt text](image.jpg)
   `);
 
-  marked.setOptions({
-    breaks: true
-  })
   return (
     
     <div className="App">
@@ -35,12 +32,7 @@ function App() {
         </textarea>
       </div>
 
-      <div className='previewWrap'>
-        <toolbar className="toolbar">Previewer</toolbar>
-        <div id="preview" 
-            dangerouslySetInnerHTML={{ __html: marked(text),}}
-        ></div>
-      </div>
+    <Previewer text={text} />
       
     </div>
   );
